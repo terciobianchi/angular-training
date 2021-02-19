@@ -3,25 +3,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 /* NgZorro Imports*/
-import { NzPageHeaderModule}  from 'ng-zorro-antd/page-header';
-import { NzTabsModule}  from 'ng-zorro-antd/tabs';
-import { NzStatisticModule}  from 'ng-zorro-antd/statistic';
-import { NzDescriptionsModule}  from 'ng-zorro-antd/descriptions';
-import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzTagModule } from 'ng-zorro-antd/tag';
-import { NzTableModule } from 'ng-zorro-antd/table';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NgZorroCommonModule } from '../../ng-zorro-common.module';
+import { IconsProviderModule } from '../../icons-provider.module';
+
+/* Others Imports */
+//TO-DO
 
 /* Project Imports */
-import { IconsProviderModule } from '../../icons-provider.module';
 import { WelcomeRoutingModule } from './welcome-routing.module';
 import { WelcomeComponent } from './welcome.component';
 
@@ -30,20 +19,7 @@ import { WelcomeComponent } from './welcome.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NzPageHeaderModule,
-    NzTabsModule,
-    NzStatisticModule,
-    NzDescriptionsModule,
-    NzBreadCrumbModule,
-    NzDropDownModule,
-    NzTagModule,
-    NzTableModule,
-    NzButtonModule,
-    NzFormModule,
-    NzInputModule,
-    NzDatePickerModule,
-    NzSelectModule,
-    NzCheckboxModule,
+    NgZorroCommonModule,
     IconsProviderModule,
     WelcomeRoutingModule
   ],
