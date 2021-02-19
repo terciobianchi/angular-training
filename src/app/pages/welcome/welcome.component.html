@@ -1,0 +1,210 @@
+<nz-page-header class="site-page-header" nzBackIcon>
+ <!--breadcrumb-->
+ <nz-breadcrumb nz-page-header-breadcrumb>
+  <nz-breadcrumb-item>First-level Menu</nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    <a>Second-level Menu</a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>Third-level Menu</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<!-- avatar -->
+<nz-avatar nz-page-header-avatar nzSrc="https://avatars0.githubusercontent.com/u/22736418?s=88&v=4"> </nz-avatar>
+
+<!--title-->
+<nz-page-header-title>Title</nz-page-header-title>
+
+<!--subtitle-->
+<nz-page-header-subtitle>This is a subtitle</nz-page-header-subtitle>
+
+<!--tags-->
+<nz-page-header-tags>
+  <nz-tag [nzColor]="'blue'">Running</nz-tag>
+</nz-page-header-tags>
+
+<!--extra-->
+<nz-page-header-extra>
+  <button nz-button nzType="primary" nzShape="round">New</button>
+  <button nz-button nzShape="round">Refresh</button>
+  <button nz-button nzShape="round">Primary</button>
+  <button nz-button nzShape="circle"><i nz-icon nzType="search"></i></button>
+  <button nz-button nzShape="circle"><i nz-icon nzType="heart"></i></button>
+  <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
+    <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
+  </button>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item>Show 1</li>
+      <li nz-menu-item>Show 2</li>
+      <li nz-menu-item>Show 2</li>
+    </ul>
+  </nz-dropdown-menu>
+</nz-page-header-extra>
+
+<!--content-->
+<nz-page-header-content>
+  <div class="content">
+    <div class="main">
+      <nz-descriptions nzSize="small" [nzColumn]="2">
+        <nz-descriptions-item nzTitle="Created" [nzSpan]="1">Lili Qu</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Association" [nzSpan]="1"><a>421421</a></nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Creation Time" [nzSpan]="1">2017-01-10</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Effective Time" [nzSpan]="1">2017-10-10</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Remarks" [nzSpan]="2">
+          Gonghu Road, Xihu District, Hangzhou, Zhejiang, China
+        </nz-descriptions-item>
+      </nz-descriptions>
+    </div>
+    <div class="extra">
+      <div>
+        <nz-statistic nzTitle="Status" nzValue="Pending"></nz-statistic>
+        <nz-statistic nzTitle="Price" [nzValue]="568.08" nzPrefix="$" style="margin: 0 32px"></nz-statistic>
+      </div>
+    </div>
+  </div>
+</nz-page-header-content>
+  <nz-page-header-footer>
+    <nz-tabset [nzSelectedIndex]="0">
+      <nz-tab nzTitle="Data">
+        <nz-table #filterTable [nzData]="listOfData" nzSize="small" nzTableLayout="fixed">
+          <thead>
+            <tr>
+              <th
+                *ngFor="let column of listOfColumns"
+                [nzSortOrder]="column.sortOrder"
+                [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections"
+                [nzFilterMultiple]="column.filterMultiple"
+                [nzFilters]="column.listOfFilter"
+                [nzFilterFn]="column.filterFn"
+              >
+                {{ column.name }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of filterTable.data">
+              <td>{{ data.name }}</td>
+              <td>{{ data.age }}</td>
+              <td>{{ data.address }}</td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </nz-tab>
+      <nz-tab nzTitle="Form">
+
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input nz-input formControlName="email" id="email" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
+              <input nz-input type="password" id="password" formControlName="password" (ngModelChange)="updateConfirmValidator()" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirm Password</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+              <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
+              <ng-template #errorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Please confirm your password!
+                </ng-container>
+                <ng-container *ngIf="control.hasError('confirm')">
+                  Two passwords that you enter is inconsistent!
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nickname" nzRequired nzTooltipTitle="What do you want other to call you">
+              <span>Nickname</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your nickname!">
+              <input nz-input id="nickname" formControlName="nickname" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+            <nz-form-control
+              [nzSm]="14"
+              [nzXs]="24"
+              [nzValidateStatus]="validateForm.controls['phoneNumber']"
+              nzErrorTip="Please input your phone number!"
+            >
+              <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+                <ng-template #addOnBeforeTemplate>
+                  <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+                    <nz-option nzLabel="+86" nzValue="+86"></nz-option>
+                    <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+                  </nz-select>
+                </ng-template>
+                <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website" nzRequired>Website</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input website!">
+              <input nz-input id="website" formControlName="website" placeholder="website" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>Birth Date</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input birth date!">
+              <nz-date-picker formControlName="birthDate"></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label
+              [nzSm]="6"
+              [nzXs]="24"
+              nzFor="captcha"
+              nzRequired
+              nzTooltipTitle="Please click 'Get captcha'"
+              [nzTooltipIcon]="captchaTooltipIcon"
+            >
+              Captcha
+            </nz-form-label>
+            <nz-form-control
+              [nzSm]="14"
+              [nzXs]="24"
+              nzErrorTip="Please input the captcha you got!"
+              nzExtra="We must make sure that your are a human."
+            >
+              <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                  <input nz-input formControlName="captcha" id="captcha" />
+                </div>
+                <div nz-col [nzSpan]="12">
+                  <button nz-button (click)="getCaptcha($event)">Get captcha</button>
+                </div>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+              <label nz-checkbox formControlName="agree">
+                <span>
+                  I have read the
+                  <a>agreement</a>
+                </span>
+              </label>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+              <button nz-button nzType="primary">Register</button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </nz-tab>
+    </nz-tabset>
+  </nz-page-header-footer>
+</nz-page-header>
+
+
