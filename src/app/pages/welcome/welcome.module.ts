@@ -18,6 +18,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 /* Project Imports */
 import { IconsProviderModule } from '../../icons-provider.module';
@@ -42,6 +43,7 @@ import { WelcomeComponent } from './welcome.component';
     NzInputModule,
     NzDatePickerModule,
     NzSelectModule,
+    NzCheckboxModule,
     IconsProviderModule,
     WelcomeRoutingModule
   ],

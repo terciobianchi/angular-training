@@ -28,6 +28,7 @@
   <button nz-button nzShape="round">Refresh</button>
   <button nz-button nzShape="round">Primary</button>
   <button nz-button nzShape="circle"><i nz-icon nzType="search"></i></button>
+  <button nz-button nzShape="circle"><i nz-icon nzType="heart"></i></button>
   <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
     <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
   </button>
@@ -154,7 +155,7 @@
           </nz-form-item>
           <nz-form-item>
             <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>Birth Date</nz-form-label>
-            <nz-form-control [nzSm]="14" [nzXs]="24">
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input birth date!">
               <nz-date-picker formControlName="birthDate"></nz-date-picker>
             </nz-form-control>
           </nz-form-item>
