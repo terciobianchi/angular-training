@@ -1,15 +1,11 @@
 <nz-page-header class="site-page-header" nzBackIcon>
- <!--breadcrumb-->
- <nz-breadcrumb nz-page-header-breadcrumb>
-  <nz-breadcrumb-item>First-level Menu</nz-breadcrumb-item>
-  <nz-breadcrumb-item>
-    <a>Second-level Menu</a>
-  </nz-breadcrumb-item>
-  <nz-breadcrumb-item>Third-level Menu</nz-breadcrumb-item>
-</nz-breadcrumb>
+  <!--breadcrumb-->
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item *ngFor="let breadcrumb of breadcrumbs"> <a routerLink="{{breadcrumb.url}}">{{breadcrumb.label}}</a> </nz-breadcrumb-item>
+  </nz-breadcrumb>
 
 <!-- avatar -->
-<nz-avatar nz-page-header-avatar nzSrc="https://avatars0.githubusercontent.com/u/22736418?s=88&v=4"> </nz-avatar>
+<nz-avatar nz-page-header-avatar nzSrc="https://data-hub.industriall.io/assets/img/svg/data-flow/icon-migration.svg"> </nz-avatar>
 
 <!--title-->
 <nz-page-header-title>Title</nz-page-header-title>
@@ -18,21 +14,35 @@
 <nz-page-header-subtitle>This is a subtitle</nz-page-header-subtitle>
 
 <!--tags-->
-<nz-page-header-tags>
+<!-- <nz-page-header-tags>
   <nz-tag [nzColor]="'blue'">Running</nz-tag>
-</nz-page-header-tags>
+</nz-page-header-tags> -->
 
 <!--extra-->
 <nz-page-header-extra>
-  <button nz-button nzType="primary" nzShape="round">New</button>
-  <button nz-button nzShape="round">Refresh</button>
-  <button nz-button nzShape="round">Primary</button>
+  <button nz-button>
+    <i nz-icon nzType="search"></i>
+    Dashboard
+  </button>
+  <button nz-button>Lag Time</button>
+  <button nz-button>Load Plan Runs</button>
+  <button nz-button>Storage Details</button>
   <button nz-button nzShape="circle"><i nz-icon nzType="search"></i></button>
   <button nz-button nzShape="circle"><i nz-icon nzType="heart"></i></button>
-  <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
-    <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
+  <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menuSettings" nzShape="circle">
+    <i nz-icon nzType="setting"></i>
   </button>
-  <nz-dropdown-menu #menu="nzDropdownMenu">
+  <nz-dropdown-menu #menuSettings="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item>Show 1</li>
+      <li nz-menu-item>Show 2</li>
+      <li nz-menu-item>Show 2</li>
+    </ul>
+  </nz-dropdown-menu>
+  <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menuUser" nzShape="circle">
+    <i nz-icon nzType="user"></i>
+  </button>
+  <nz-dropdown-menu #menuUser="nzDropdownMenu">
     <ul nz-menu>
       <li nz-menu-item>Show 1</li>
       <li nz-menu-item>Show 2</li>
